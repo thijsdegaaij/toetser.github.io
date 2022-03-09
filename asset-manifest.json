@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/toetser/static/css/main.e8a2c1b5.css",
+    "main.js": "/toetser/static/js/main.47704e37.js",
+    "index.html": "/toetser/index.html",
+    "main.e8a2c1b5.css.map": "/toetser/static/css/main.e8a2c1b5.css.map",
+    "main.47704e37.js.map": "/toetser/static/js/main.47704e37.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e8a2c1b5.css",
+    "static/js/main.47704e37.js"
+  ]
+}
