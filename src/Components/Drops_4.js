@@ -101,7 +101,7 @@ function Drops(props) {
           }}
         >
           <div className="dropWord">{concept.word}</div>
-          <img className="dropImage cat_img4" src={window.location.origin + `/img/${concept.image}`} alt={concept.word} />
+          <img className="dropImage cat_img4" src={process.env.PUBLIC_URL + `/img/${concept.image}`} alt={concept.word} />
         </div>
       ))}
     </div>
