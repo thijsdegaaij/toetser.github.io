@@ -1,5 +1,5 @@
 import './App.css'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 
 import initialQuestions from './initialData'
 import initialUsers from './initialUsers'

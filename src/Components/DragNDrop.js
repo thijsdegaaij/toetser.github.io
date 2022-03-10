@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react'
-import Drops_1 from './Drops_1'
-import Drops_4 from './Drops_4'
+import React, { useState, useRef } from 'react'
+import DropsOnePicture from './DropsOnePicture'
+import DropsFourPictures from './DropsFourPictures'
 
 // HEADER
 function DNDHeader(props) {
@@ -106,8 +106,8 @@ function DragNDrop(props) {
         getmenuShow={props.getmenuShow}
         menuShow={props.menuShow}
       />
-      {props.category === 'cat_img1' ? (
-        <Drops_1
+      {/* {props.category === 'cat_img1' ? (
+        <DropsOnePicture
           questions={props.questions}
           question={props.question}
           getQuestion={props.getQuestion}
@@ -121,7 +121,7 @@ function DragNDrop(props) {
           category={props.ategory}
         />
       ) : (
-        <Drops_4
+        <DropsFourPictures
           questions={props.questions}
           question={props.question}
           getQuestion={props.getQuestion}
@@ -134,7 +134,7 @@ function DragNDrop(props) {
           getHoera={getHoeraParent}
           category={props.category}
         />
-      )}
+      )} */}
 
       <Drags questions={props.questions} question={props.question} getDragNode={getDragNodeParent} />
 

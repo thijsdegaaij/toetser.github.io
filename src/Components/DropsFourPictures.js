@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
-import CanvasLines from './CanvasLines'
+import React, { useState, useEffect } from 'react'
 
 // DROPS
 function Drops(props) {

@@ -1,10 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useRef, useEffect } from 'react'
 import initialQuestions from '../initialData'
 
 function CanvasLines(props) {
   // CANVAS LIJNEN
   const canvas = useRef()
-  let ctx = null
+  let ctx = useRef()
+  // let ctx = null
 
   const conceptL = initialQuestions[props.question].concepts.length
   // const [conceptsLength, setConceptLength] = useState(0)
