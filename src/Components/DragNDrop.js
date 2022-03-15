@@ -15,16 +15,19 @@ function DNDHeader(props) {
 
   return (
     <div className="headWrapper">
+      {/* VRAAG */}
       <div className={props.hoera ? 'hoera title' : 'title'}>{props.questions[props.question].title}</div>
+
       <div className="nonTitle">
         <div className="points">
+          {/* PERCENTAGE */}
           <div className="percentage">{percentage}%</div>
           <div className="posNumber">{props.posNumber}</div>
           <div className="negNumber">{props.negNumber}</div>
         </div>
-        <div className={`inlogIcon ${props.inlogShow}`} onClick={onClickInlog}>
-          T
-        </div>
+        {/* INLOG BUTTON */}
+        <div className={`inlogIcon ${props.inlogShow}`} onClick={onClickInlog}></div>
+        {/* MENU BUTTON */}
         <div className={`menuIcon ${props.menuShow}`} onClick={onClickMenu}>
           {' '}
           &#9776;
@@ -34,7 +37,7 @@ function DNDHeader(props) {
   )
 }
 
-// DRAGS ANTWOORDEN
+// DRAGS
 function Drags(props) {
   const dragStartHandler = (e) => {
     props.getDragNode(e.target)
@@ -106,7 +109,7 @@ function DragNDrop(props) {
         getmenuShow={props.getmenuShow}
         menuShow={props.menuShow}
       />
-      {/* {props.category === 'cat_img1' ? (
+      {props.category === 'cat_img1' ? (
         <DropsOnePicture
           questions={props.questions}
           question={props.question}
@@ -134,7 +137,7 @@ function DragNDrop(props) {
           getHoera={getHoeraParent}
           category={props.category}
         />
-      )} */}
+      )}
 
       <Drags questions={props.questions} question={props.question} getDragNode={getDragNodeParent} />
 
