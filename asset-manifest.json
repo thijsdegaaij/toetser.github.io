@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/toetser.github.io/static/css/main.32b3339b.css",
+    "main.css": "/toetser.github.io/static/css/main.d3a5c8b7.css",
     "main.js": "/toetser.github.io/static/js/main.e88e53a2.js",
     "index.html": "/toetser.github.io/index.html",
-    "main.32b3339b.css.map": "/toetser.github.io/static/css/main.32b3339b.css.map",
+    "main.d3a5c8b7.css.map": "/toetser.github.io/static/css/main.d3a5c8b7.css.map",
     "main.e88e53a2.js.map": "/toetser.github.io/static/js/main.e88e53a2.js.map"
   },
   "entrypoints": [
-    "static/css/main.32b3339b.css",
+    "static/css/main.d3a5c8b7.css",
     "static/js/main.e88e53a2.js"
   ]
 }
