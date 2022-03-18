@@ -1,57 +1,67 @@
-import './App.css'
-import React from 'react'
-import { useState } from 'react'
-import { DndContext } from '@dnd-kit/core'
-import { MouseSensor, TouchSensor, KeyboardSensor, useSensor, useSensors } from '@dnd-kit/core'
+import React, { useState } from 'react'
 
-// import { Draggable } from './componentsDndKit/Draggable'
-// import { Droppable } from './componentsDndKit/Droppable'
-import Draggable from './componentsDndKit/Draggable'
-import Droppable from './componentsDndKit/Droppable'
+import './App.css'
+import initialQuestions from './initialData'
+import initialUsers from './initialUsers'
+import Inlog from './Components/Inlog'
+import Menu from './Components/Menu'
+import DndContainer from './Components/DND'
 
 function App() {
-  const mouseSensor = useSensor(MouseSensor, {
-    // Require the mouse to move by 10 pixels before activating
-    activationConstraint: {
-      distance: 10,
-    },
-  })
-  const touchSensor = useSensor(TouchSensor, {
-    // Press delay of 250ms, with tolerance of 5px of movement
-    activationConstraint: {
-      delay: 250,
-      tolerance: 5,
-    },
-  })
-  const keyboardSensor = useSensor(KeyboardSensor)
+  // QUESTIONS
+  const questions = initialQuestions
 
-  const sensors = useSensors(mouseSensor, touchSensor, keyboardSensor)
+  // QUESTION
+  const [question, setQuestion] = useState(0)
+  function getQuestionParent(props) {
+    setQuestion(props)
+  }
+  const questionData = questions[question]
 
-  const containers = ['A', 'B', 'C']
-  const [parent, setParent] = useState(null)
-  const draggableMarkup = <Draggable id="draggable">Drag me</Draggable>
+  // SHORTCUTS
+  const category = questions[question].category
+  const concepts = questions[question].concepts
+
+  // INLOG
+  const [inlogShow, setInlogShow] = useState(false)
+  function getInlogShowParent(props) {
+    setInlogShow(!props)
+    menuShow ? setmenuShow(false) : setmenuShow(false)
+  }
+
+  // MENU
+  const [menuShow, setmenuShow] = useState(false)
+  function getmenuShowParent(props) {
+    setmenuShow(!props)
+    inlogShow ? setInlogShow(false) : setInlogShow(false)
+  }
+
+  console.log('question; App:', question)
+  console.log('category App:', category)
+  console.log('concepts App:', questionData)
+  console.log('concepts App:', concepts)
+  // console.log('inlogshow: App:.', inlogShow)
+  // console.log('menushow: App:', menuShow)
 
   return (
-    <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
-      {parent === null ? draggableMarkup : null}
-
-      {containers.map((id) => (
-        // We updated the Droppable component so it would accept an `id`
-        // prop and pass it to `useDroppable`
-        <Droppable key={id} id={id}>
-          {parent === id ? draggableMarkup : 'Drop here'}
-        </Droppable>
-      ))}
-    </DndContext>
+    <div className="App">
+      <header className="App-header">
+        <Inlog users={initialUsers} inlogShow={inlogShow} questions={questions} question={question} />
+        <Menu menuShow={menuShow} />
+        <DndContainer
+          questions={questions}
+          question={question}
+          getQuestion={getQuestionParent}
+          category={category}
+          concepts={concepts}
+          inlogShow={inlogShow}
+          getInlogShow={getInlogShowParent}
+          menuShow={menuShow}
+          getmenuShow={getmenuShowParent}
+        />
+      </header>
+    </div>
   )
-
-  function handleDragEnd(event) {
-    const { over } = event
-
-    // If the item is dropped over a container, set it as the parent
-    // otherwise reset the parent to `null`
-    setParent(over ? over.id : null)
-  }
 }
 
 export default App

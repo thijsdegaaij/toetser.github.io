@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 
 // HEADER
 function Inlog(props) {
-  console.log('iniuser:', props.users[0].voornaam)
+  // console.log('iniuser:', props.users[0].voornaam)
   const firstLetter = props.users[0].voornaam.charAt(0)
 
   // console.log('firletter:', firstLetter)
