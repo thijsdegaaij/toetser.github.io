@@ -23,14 +23,14 @@ function Droppable(props) {
   )
 }
 
-function DroppableMultiple(props) {
+function DropMultiple(props) {
   return (
     <section className="dropWrapper">
-      {props.concepts.map((concept, conceptI) => (
+      {props.conceptsOfQ.map((concept, conceptI) => (
         <Droppable id={conceptI + 1} key={conceptI} concept={concept} correct={props.correct}></Droppable>
       ))}
     </section>
   )
 }
 
-export default DroppableMultiple
+export default DropMultiple

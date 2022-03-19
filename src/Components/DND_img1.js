@@ -3,14 +3,10 @@ import React, { useState, useRef } from 'react'
 import { DndContext, useDraggable } from '@dnd-kit/core'
 import { MouseSensor, TouchSensor, useSensor, useSensors } from '@dnd-kit/core'
 
-import DNDHeader from './DNDHeader'
-
 import DropOne from './DropOne'
-import DroppableMultiple from './DroppableMultiple'
 import Draggables from './Draggables'
-import DropsFourPictures from './DropsFourPictures'
 
-function DndContainer(props) {
+function Dnd_img1(props) {
   // const [category, setGategory] = useState(questions[question].category)
   // setGategory(questions[question].category)
 
@@ -18,13 +14,6 @@ function DndContainer(props) {
   const [posNumber, setPosNumber] = useState(0)
   const [goodPerQuestion, setGoodPerQuestion] = useState(0)
   const [hoera, setHoera] = useState(false)
-
-  const goBack = () => {
-    props.getQuestion(props.question - 1)
-  }
-  const goFurther = () => {
-    props.getQuestion(props.question + 1)
-  }
 
   // DND-KIT
   const mouseSensor = useSensor(MouseSensor, {
@@ -42,13 +31,15 @@ function DndContainer(props) {
 
   const handleDragEnd = (event) => {
     const { active, over } = event
-    const dropNode = document.getElementById(over.data.current)
+    if (active && over) {
+    }
+    const dropNode = over === null ? null : document.getElementById(over.data.current)
     const dragNode = document.getElementById(active.id)
 
     const dropNodesWords = document.getElementsByClassName('dropWord')
     const dragNodes = document.getElementsByClassName('dragItem')
     // console.log('dragEnd active: ', active)
-    // console.log('dragEnd over: ', over.data.current)
+    console.log('dragEnd over: ', over)
     // console.log('dragEnd dropNode: ', dropNode.childNodes[0])
     // console.log('dragEnd dragNode: ', dragNode)
 
@@ -56,13 +47,11 @@ function DndContainer(props) {
     if (active && over && active.data.current === over.data.current) {
       // DROP
       // two times ternery, cannot do it in one ternery statement
-      props.category === 'cat_img1'
-        ? (dropNode.style.backgroundColor = 'var(--green-bg-color)')
-        : (dropNode.childNodes[0].style = 'font-size: 5vw; background-color: var(--green-bg-color)')
-      props.category === 'cat_img1'
-        ? (dropNode.childNodes[0].style.fontSize = '5vw')
-        : (dropNode.childNodes[0].style = 'font-size: 5vw; background-color: var(--green-bg-color)')
-      setPosNumber(posNumber + 1)
+
+      dropNode.style.backgroundColor = 'var(--green-bg-color)'
+      dropNode.childNodes[0].style.fontSize = '5vw'
+
+      props.getPosNumber(props.posNumber + 1)
       setGoodPerQuestion(goodPerQuestion + 1)
 
       // DRAG
@@ -74,11 +63,11 @@ function DndContainer(props) {
     else {
       // DRAG
       dragNode.style.backgroundColor = 'var(--red-bg-color)'
-      setNegNumber(negNumber - 1)
+      props.getNegNumber(props.negNumber - 1)
     }
     // ALL CORRECT DROPPED: HOERA
-    if (goodPerQuestion + 1 === props.questions[props.question].concepts.length) {
-      setHoera(true)
+    if (goodPerQuestion + 1 === props.conceptsOfQ.length) {
+      props.getHoera(true)
 
       // TO NEXT QUESTION
       setTimeout(() => {
@@ -86,7 +75,7 @@ function DndContainer(props) {
 
         //RESET QUESTION
         setGoodPerQuestion(0)
-        setHoera(false)
+        props.getHoera(false)
 
         // dragNode = null
         for (let node of dropNodesWords) {
@@ -102,37 +91,33 @@ function DndContainer(props) {
     }
   }
 
+  const [dropNode, setDropNode] = useState(null)
+
+  const handleDragOver = (event) => {
+    const { over } = event
+    const dropN = over === null && !props.cat_img1 ? null : document.getElementById(over.data.current)
+    setDropNode(over === null && !props.cat_img1 ? null : document.getElementById(over.data.current))
+    // necessary, otherwist crash if leave dragOver
+    if (dropN === null) {
+      dropNode.style.backgroundColor = 'var(--white-bg-colorImg1)'
+    } else if (dropN.style.backgroundColor === 'var(--green-bg-color') {
+      dropN.style.backgroundColor = 'var(--green-bg-color'
+    } else {
+      dropN.style.backgroundColor = 'var(--blue-bg-colorLight'
+    }
+    if (dropNode !== null) {
+      dropNode.style.backgroundColor = 'var(--white-bg-colorImg1)'
+    }
+  }
+
   return (
     <div>
-      <DNDHeader
-        questions={props.questions}
-        question={props.question}
-        hoera={hoera}
-        posNumber={posNumber}
-        negNumber={negNumber}
-        getInlogShow={props.getInlogShow}
-        inlogShow={props.inlogShow}
-        getmenuShow={props.getmenuShow}
-        menuShow={props.menuShow}
-      />
-
       <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
-        {/* CHOOSE CATEGORY */}
-        {props.category === 'cat_img1' ? (
-          <DropOne key="dropKey" id="dropId" concepts={props.concepts} questions={props.questions} question={props.question} />
-        ) : (
-          <DroppableMultiple key="drops" id="drops" concepts={props.concepts}></DroppableMultiple>
-        )}
-
-        <Draggables key={'drags'} concepts={props.concepts} />
+        <DropOne key="dropKey" id="dropId" conceptsOfQ={props.conceptsOfQ} questions={props.questions} question={props.question} />
+        <Draggables key={'drags'} conceptsOfQ={props.conceptsOfQ} />
       </DndContext>
-
-      <div className="buttons">
-        <button onClick={goBack}>terug</button>
-        <button onClick={goFurther}>verder</button>
-      </div>
     </div>
   )
 }
 
-export default DndContainer
+export default Dnd_img1

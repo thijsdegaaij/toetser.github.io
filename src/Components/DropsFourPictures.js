@@ -43,6 +43,7 @@ function Drops(props) {
   const dragLeaveHandler = (e) => {
     e.preventDefault()
   }
+
   const dropHandler = (e) => {
     e.preventDefault()
     console.log('dropItem: D_4..', e.target)
@@ -63,7 +64,7 @@ function Drops(props) {
       props.getNegNumber(props.negNumber - 1)
     }
     // ALL DROPPED
-    if (goodPerQuestion + 1 === props.questions[props.question].concepts.length) {
+    if (goodPerQuestion + 1 === props.questions[props.question].conceptsOfQ.length) {
       props.getHoera(true)
 
       setTimeout(() => {
@@ -86,7 +87,7 @@ function Drops(props) {
   console.log('qq.. DND', props.questions[props.question])
   return (
     <div className="dropWrapper">
-      {props.questions[props.question].concepts.map((concept, conceptI) => (
+      {props.questions[props.question].conceptsOfQ.map((concept, conceptI) => (
         <div
           className="dropItem cat_img4"
           key={conceptI}

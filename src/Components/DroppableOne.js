@@ -38,7 +38,7 @@ function Drops(props) {
       props.getNegNumber(props.negNumber - 1)
     }
     // ALL DROPPED
-    if (goodPerQuestion + 1 === props.questions[props.question].concepts.length) {
+    if (goodPerQuestion + 1 === props.questions[props.question].conceptsOfQ.length) {
       props.getHoera(true)
 
       setTimeout(() => {
@@ -113,7 +113,7 @@ function Drops(props) {
         ></CanvasLines>
       </div>
 
-      {props.questions[props.question].concepts.map((concept, conceptI) => (
+      {props.questions[props.question].conceptsOfQ.map((concept, conceptI) => (
         <div
           className="dropItem cat_img1"
           key={conceptI}

@@ -3,18 +3,16 @@ import React from 'react'
 // HEADER
 function DNDHeader(props) {
   const percentage = props.posNumber - props.negNumber === 0 ? 0 : Math.floor((props.posNumber * 100) / (props.posNumber - props.negNumber))
+  const firstLetter = props.users[0].voornaam.charAt(0)
 
-  const onClickInlog = () => {
-    props.getInlogShow(props.inlogShow)
-  }
   const onClickMenu = () => {
-    props.getmenuShow(props.menuShow)
+    props.getMenuShow(props.menuShow)
   }
 
   return (
     <div className="headWrapper">
       {/* VRAAG */}
-      <div className={props.hoera ? 'hoera title' : 'title'}>{props.questions[props.question].title}</div>
+      <div className="title">{props.questions[props.question].title}</div>
 
       <div className="nonTitle">
         <div className="points">
@@ -24,10 +22,11 @@ function DNDHeader(props) {
           <div className="negNumber">{props.negNumber}</div>
         </div>
         {/* INLOG BUTTON */}
-        <div className={`inlogIcon ${props.inlogShow}`} onClick={onClickInlog}></div>
+        <div className={`inlogIcon ${props.inlogShow}`} onClick={() => props.getInlogShow(props.inlogShow)}>
+          <div>{firstLetter}</div>
+        </div>
         {/* MENU BUTTON */}
-        <div className={`menuIcon ${props.menuShow}`} onClick={onClickMenu}>
-          {' '}
+        <div className={`menuIcon ${props.menuShow}`} onClick={() => props.getMenuShow(props.menuShow)}>
           &#9776;
         </div>
       </div>

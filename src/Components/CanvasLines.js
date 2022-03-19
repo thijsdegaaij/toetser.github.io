@@ -7,10 +7,10 @@ function CanvasLines(props) {
   let ctx = useRef()
   // let ctx = null
 
-  const conceptL = initialQuestions[props.question].concepts.length
+  const conceptL = initialQuestions[props.question].conceptsOfQ.length
   // const [conceptsLength, setConceptLength] = useState(0)
   // setConceptLength(conceptL)
-  console.log('conceptL:', conceptL)
+  // console.log('conceptL:', conceptL)
 
   useEffect(() => {
     // dynamically assign the width and height to canvas
@@ -23,25 +23,25 @@ function CanvasLines(props) {
       // console.log('01 canvasEle.height:', canvasEle.height)
       // console.log('02 canvasEle.width:', canvasEle.width)
 
-      const cc_1x = (props.questions[props.question].concepts[0].X_c * canvasEle.width) / 100
-      const cc_1y = (props.questions[props.question].concepts[0].Y_c * canvasEle.height) / 100
-      const p_1x = (props.questions[props.question].concepts[0].X_t * canvasEle.width) / 100
-      const p_1y = (props.questions[props.question].concepts[0].Y_t * canvasEle.height) / 100
+      const cc_1x = (props.questions[props.question].conceptsOfQ[0].X_c * canvasEle.width) / 100
+      const cc_1y = (props.questions[props.question].conceptsOfQ[0].Y_c * canvasEle.height) / 100
+      const p_1x = (props.questions[props.question].conceptsOfQ[0].X_t * canvasEle.width) / 100
+      const p_1y = (props.questions[props.question].conceptsOfQ[0].Y_t * canvasEle.height) / 100
       drawLine({ x: cc_1x, y: cc_1y, x1: p_1x, y1: p_1y }, { color: 'black', width: 2 })
 
       if (conceptL > 1) {
-        const cc_2x = (props.questions[props.question].concepts[1].X_c * canvasEle.width) / 100
-        const cc_2y = (props.questions[props.question].concepts[1].Y_c * canvasEle.height) / 100
-        const p_2x = (props.questions[props.question].concepts[1].X_t * canvasEle.width) / 100
-        const p_2y = (props.questions[props.question].concepts[1].Y_t * canvasEle.height) / 100
+        const cc_2x = (props.questions[props.question].conceptsOfQ[1].X_c * canvasEle.width) / 100
+        const cc_2y = (props.questions[props.question].conceptsOfQ[1].Y_c * canvasEle.height) / 100
+        const p_2x = (props.questions[props.question].conceptsOfQ[1].X_t * canvasEle.width) / 100
+        const p_2y = (props.questions[props.question].conceptsOfQ[1].Y_t * canvasEle.height) / 100
         drawLine({ x: cc_2x, y: cc_2y, x1: p_2x, y1: p_2y }, { color: 'black', width: 2 })
       }
 
       if (conceptL > 2) {
-        const cc_3x = (props.questions[props.question].concepts[2].X_c * canvasEle.width) / 100
-        const cc_3y = (props.questions[props.question].concepts[2].Y_c * canvasEle.height) / 100
-        const p_3x = (props.questions[props.question].concepts[2].X_t * canvasEle.width) / 100
-        const p_3y = (props.questions[props.question].concepts[2].Y_t * canvasEle.height) / 100
+        const cc_3x = (props.questions[props.question].conceptsOfQ[2].X_c * canvasEle.width) / 100
+        const cc_3y = (props.questions[props.question].conceptsOfQ[2].Y_c * canvasEle.height) / 100
+        const p_3x = (props.questions[props.question].conceptsOfQ[2].X_t * canvasEle.width) / 100
+        const p_3y = (props.questions[props.question].conceptsOfQ[2].Y_t * canvasEle.height) / 100
         drawLine({ x: cc_3x, y: cc_3y, x1: p_3x, y1: p_3y }, { color: 'black', width: 2 })
       }
     }, 100)

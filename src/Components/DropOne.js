@@ -22,15 +22,15 @@ function DropOne(props) {
 
   const [imgOneHeight, setImgOneHeight] = useState(300)
   const [imgOneWidth, setImgOneWidth] = useState(350)
-  const [dropWrapperHeight, setDropWrapperHeight] = useState(800)
-  const [dropWrapperWidth, setDropWrapperWidth] = useState(800)
+  const [dropWrapperHeight, setDropWrapperHeight] = useState(300)
+  const [dropWrapperWidth, setDropWrapperWidth] = useState(300)
 
   setTimeout(() => {
     setImgOneWidth(imageOne.current && imageOne.current.clientWidth)
     setImgOneHeight(imageOne.current && imageOne.current.clientHeight)
     setDropWrapperHeight(dropWrapper.current && dropWrapper.current.clientHeight)
     setDropWrapperWidth(dropWrapper.current && dropWrapper.current.clientWidth)
-  }, 30)
+  }, 0)
 
   const styleDropItem = (concept) => {
     return {
@@ -39,12 +39,12 @@ function DropOne(props) {
     }
   }
   // CONSOLES
-  // console.log('concept:', props.concepts[0])
-  console.log('height of imageOne and dropWrapper', imgOneHeight, dropWrapperHeight)
-  console.log('height of imgOneWidth and dropWrapperWidth', imgOneWidth, dropWrapperWidth)
+  // console.log('concept:', props.conceptsOfQ[0])
+  // console.log('height of imageOne and dropWrapper', imgOneHeight, dropWrapperHeight)
+  // console.log('height of imgOneWidth and dropWrapperWidth', imgOneWidth, dropWrapperWidth)
 
   return (
-    <div className="dropWrapper" ref={dropWrapper}>
+    <div ref={dropWrapper} className="dropWrapper">
       <div className="imageOne cat_img1">
         <img
           className="imageOne__img"
@@ -64,7 +64,7 @@ function DropOne(props) {
         ></CanvasLines>
       </div>
 
-      {props.questions[props.question].concepts.map((concept, conceptI) => (
+      {props.questions[props.question].conceptsOfQ.map((concept, conceptI) => (
         <Droppable id={conceptI + 1} key={conceptI} concept={concept} conceptI={conceptI} styleDropItem={styleDropItem}>
           {' '}
         </Droppable>

@@ -2,11 +2,15 @@
   --green-bg-color: rgba(200, 250, 200, 0.6);
   --red-bg-color: rgba(250, 200, 200, 0.6);
   --blue-bg-color: rgb(203, 244, 250);
+  --blue-bg-colorLight: rgba(221, 250, 254, 0.7);
   --red-color: rgb(249, 117, 117);
   --green-color: rgb(4, 181, 4);
-  --dropWrapper-height: 51vh;
-  --dropItem-height: 25vh;
+  --headWrapper-height: 7vh;
+  --dropWrapper-height: 46.4vh;
+  --dragWrapper-height: 33vh;
+  --dropItem-height: 23vh;
   --white-bg-color: white;
+  --white-bg-colorImg1: rgba(250, 250, 250, 0.7);
   --bg-color-inlog: rgb(210, 6, 6);
 
   box-sizing: border-box;
@@ -17,13 +21,17 @@
 .questionWrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   background-color: var(--white-bg-color);
-  height: 100vh;
+  height: 92vh;
 }
 
 .hoera {
   animation: blinkingBackground 0.5s infinite;
+}
+.hoera.dndcontainer {
+  animation: blinkingBackground 0.5s infinite;
+  background-color: blueviolet;
 }
 @keyframes blinkingBackground {
   0% {
@@ -41,21 +49,17 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* padding: 0px 5px; */
-  align-items: baseline;
-  margin-top: 0.2vh;
-  padding-bottom: 0.2vh;
-  margin-bottom: 4px;
-  border-bottom: 2px solid lightgrey;
+  align-items: center;
+  padding: 8px 6px 8px 6px;
+  height: var(--headWrapper-height);
 }
 .title {
-  font-size: 7vw;
-  padding: 6px 8px;
+  font-size: 6.5vw;
+  padding: 0px 8px;
   border-radius: 5px;
   width: 50vw;
   overflow: hidden;
   text-overflow: clip;
-  height: 7.5vw;
 }
 .nonTitle {
   display: flex;
@@ -63,13 +67,12 @@
   justify-content: space-between;
   align-items: center;
   width: 45vw;
-  height: 7.5vw;
 }
 .points {
   display: flex;
-  width: 20vw;
-  justify-content: space-around;
-  font-size: 2vh;
+  width: 21vw;
+  justify-content: space-between;
+  font-size: 4.4vw;
 }
 .negNumber {
   color: var(--red-color);
@@ -85,15 +88,15 @@
   background-color: var(--bg-color-inlog);
   color: white;
   border-radius: 1.5vh;
-  width: 2.7vh;
-  height: 2.7vh;
+  width: 2.4vh;
+  height: 2.4vh;
   font-size: 1.4vh;
   cursor: pointer;
 }
 .menuIcon {
-  font-size: 4.4vh;
+  font-size: 4.2vh;
   cursor: pointer;
-  padding-bottom: 0.7vh;
+  padding-bottom: 0.5vh;
 }
 
 .dropWrapper {
@@ -102,7 +105,7 @@
   grid-gap: 0px;
   height: var(--dropWrapper-height);
   position: relative;
-  z-index: 3;
+  z-index: 0;
   /* border: 4px solid red; */
 }
 
@@ -151,10 +154,10 @@
   position: relative;
   overflow: hidden;
   font-size: 0;
-  border-radius: 3px;
+  border-radius: 5px;
   box-sizing: border-box;
   height: var(--dropItem-height);
-  margin: 4px;
+  /* margin: 4px; */
 }
 .dropItem.cat_img1 {
   position: absolute;
@@ -162,7 +165,10 @@
   width: 35vw;
   border: 1px solid black;
   transform: translate(-53%, -55%);
-  background-color: rgba(250, 250, 250, 0.7);
+  background-color: var(--white-bg-colorImg1);
+}
+.dropItem.cat_img4 {
+  border: 3px solid white;
 }
 .dropWord {
   padding: 0px 8px 5px 8px;
@@ -189,7 +195,7 @@
 }
 
 .dragWrapper {
-  height: 39vh;
+  height: var(--dragWrapper-height);
   width: 55vw;
 
   display: flex;
@@ -198,7 +204,7 @@
   align-content: center;
   margin-left: auto;
   margin-right: auto;
-  /* margin-top: 1vh; */
+  margin-top: 1vh;
 }
 .dragItem {
   margin-top: 2.3vh;
@@ -228,36 +234,45 @@
 .buttons button:nth-child(2) {
   right: 2px;
 }
-.menuWrapper {
+.buttons button:nth-child(3) {
+  left: 42.5vw;
+}
+
+.cms_image {
   position: absolute;
   padding: 3vw 6vw;
   box-sizing: border-box;
   border-radius: 5vw;
   border: 2px solid lightgray;
-  top: 6vh;
+  top: 56vh;
+  left: 3vw;
+  background-color: white;
+  width: 94vw;
+  height: 44vh;
+  z-index: 12;
+  box-shadow: rgb(43, 43, 44) 0px 10px 72px;
+}
+.cms_image img {
+  border: 1px solid black;
+}
+
+.menuWrapper,
+.inlogWrapper {
+  position: absolute;
+  padding: 3vw 6vw;
+  box-sizing: border-box;
+  border-radius: 5vw;
+  border: 2px solid lightgray;
+  top: 9vh;
   left: 4vw;
   background-color: white;
   width: 91vw;
-  height: 84vh;
+  height: 82vh;
   z-index: 12;
   box-shadow: rgb(43, 43, 44) 0px 10px 72px;
 }
 .menuWrapper.false {
   display: none;
-}
-.inlogWrapper {
-  position: absolute;
-  padding: 3vw 6vw;
-  box-sizing: border-box;
-  /* border-radius: 5vw; */
-  border: 2px solid lightgray;
-  top: 56vh;
-  left: 4vw;
-  background-color: white;
-  width: 91vw;
-  height: 84vh;
-  z-index: 10;
-  box-shadow: rgb(43, 43, 44) 0px 10px 72px;
 }
 .inlogWrapper div {
   border-bottom: 1px solid lightgray;

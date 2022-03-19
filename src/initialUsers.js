@@ -4,7 +4,7 @@ const initialUsers = [
     voornaam: 'Thijs',
     achternaam: 'de Gaaij',
     quantityAnswers: 4,
-    concepts: [
+    conceptsOfQ: [
       { word: 'paard', image: 'paard.jpg' },
       { word: 'geit', image: 'geit.jpg' },
       { word: 'koe', image: 'koe.jpg' },
@@ -17,7 +17,7 @@ const initialUsers = [
     category: 'cat_img1',
     quantityAnswers: 2,
     imageGroot: 'tomaat_zaad-vrucht.png',
-    concepts: [
+    conceptsOfQ: [
       { word: 'zaadje', X_c: '5vw', Y_c: '45vh' },
       { word: 'vruchtvlees', X_c: '5vw', Y_c: '3vh' },
     ],

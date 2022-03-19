@@ -25,7 +25,7 @@ export function Draggable(props) {
 function Draggables(props) {
   return (
     <section className="dragWrapper">
-      {props.concepts.map((concept, conceptI) => (
+      {props.conceptsOfQ.map((concept, conceptI) => (
         <Draggable id={conceptI + 1} key={conceptI} concept={concept} conceptI={conceptI}></Draggable>
       ))}
     </section>

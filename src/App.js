@@ -5,7 +5,8 @@ import initialQuestions from './initialData'
 import initialUsers from './initialUsers'
 import Inlog from './Components/Inlog'
 import Menu from './Components/Menu'
-import DndContainer from './Components/DND'
+import CMSImage from './Components/CMS_image'
+import DNDContainer from './Components/DNDContainer'
 
 function App() {
   // QUESTIONS
@@ -20,7 +21,7 @@ function App() {
 
   // SHORTCUTS
   const category = questions[question].category
-  const concepts = questions[question].concepts
+  const conceptsOfQ = questions[question].conceptsOfQ
 
   // INLOG
   const [inlogShow, setInlogShow] = useState(false)
@@ -35,29 +36,38 @@ function App() {
     setmenuShow(!props)
     inlogShow ? setInlogShow(false) : setInlogShow(false)
   }
+  // CCMS
+  const [cmsShow, setCmsShow] = useState(false)
+  function getCmsShowParent(props) {
+    setCmsShow(!props)
+  }
 
   console.log('question; App:', question)
   console.log('category App:', category)
-  console.log('concepts App:', questionData)
-  console.log('concepts App:', concepts)
+  console.log('questionData App:', questionData)
+  console.log('conceptsOfQ App:', conceptsOfQ)
   // console.log('inlogshow: App:.', inlogShow)
   // console.log('menushow: App:', menuShow)
 
   return (
     <div className="App">
       <header className="App-header">
-        <Inlog users={initialUsers} inlogShow={inlogShow} questions={questions} question={question} />
-        <Menu menuShow={menuShow} />
-        <DndContainer
+        {inlogShow ? <Inlog users={initialUsers} questions={questions} question={question} /> : null}
+        {menuShow ? <Menu /> : null}
+        {cmsShow ? <CMSImage questions={questions} question={question} /> : null}
+        <DNDContainer
+          users={initialUsers}
           questions={questions}
           question={question}
           getQuestion={getQuestionParent}
           category={category}
-          concepts={concepts}
+          conceptsOfQ={conceptsOfQ}
           inlogShow={inlogShow}
           getInlogShow={getInlogShowParent}
           menuShow={menuShow}
-          getmenuShow={getmenuShowParent}
+          getMenuShow={getmenuShowParent}
+          cmsShow={cmsShow}
+          getCmsShow={getCmsShowParent}
         />
       </header>
     </div>

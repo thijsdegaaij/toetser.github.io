@@ -43,7 +43,7 @@ function App() {
           getQuestion={getQuestionParent}
           getInlogShow={getInlogShowParent}
           inlogShow={inlogShow}
-          getmenuShow={getmenuShowParent}
+          getMenuShow={getmenuShowParent}
           menuShow={menuShow}
           category={category}
         />
