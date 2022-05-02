@@ -250,7 +250,7 @@
 }
 /* CMS */
 .buttons button:nth-child(3) {
-  top: 86vh;
+  bottom: 13vh;
   left: 0.5vw;
   /* top: 0px;
   left: 42.5vw; */
