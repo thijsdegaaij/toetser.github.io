@@ -3,7 +3,7 @@ export function giveThijs() {
   return thijs
 }
 
-export function giveImgHW() {
+export function giveimgOneWidthW() {
   let img = new Image()
   img.onload = function () {
     alert(this.width)
@@ -11,7 +11,7 @@ export function giveImgHW() {
   // img.src = document.getElementById('imageOne_img').src
 }
 
-export function giveImgHW_old() {
+export function giveimgOneWidthW_old() {
   let img = new Image()
   img = document.getElementById('imageOne_img')
   if (img !== null) {

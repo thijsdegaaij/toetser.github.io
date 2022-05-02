@@ -10,10 +10,10 @@ import Inlog from './Components/Inlog'
 
 function App() {
   const questions = initialQuestions
-  const [question, setQuestion] = useState(0)
+  const [questionNr, setQuestion] = useState(0)
   const [inlogShow, setInlogShow] = useState(false)
   const [menuShow, setmenuShow] = useState(false)
-  const category = questions[question].category
+  const category = questions[questionNr].category
   console.log('category App..', category)
 
   function getInlogShowParent(props) {
@@ -27,19 +27,24 @@ function App() {
   function getQuestionParent(props) {
     setQuestion(props)
   }
-  console.log('question; App..', question)
+  console.log('questionNr; App..', questionNr)
   console.log('inlogshow: App..', inlogShow)
   console.log('menushow: App..', menuShow)
-  // const [question, setQuestion] = useState(0)
+  // const [questionNr, setQuestion] = useState(0)
 
   return (
     <div className="App">
       <header className="App-header">
-        <Inlog users={initialUsers} inlogShow={inlogShow} questions={questions} question={question} />
+        <Inlog
+          users={initialUsers}
+          inlogShow={inlogShow}
+          questions={questions}
+          questionNr={questionNr}
+        />
         <Menu menuShow={menuShow} />
         <DragNDrop
           questions={questions}
-          question={question}
+          questionNr={questionNr}
           getQuestion={getQuestionParent}
           getInlogShow={getInlogShowParent}
           inlogShow={inlogShow}

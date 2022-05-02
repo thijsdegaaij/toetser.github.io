@@ -10,15 +10,15 @@ function CanvasLines(props) {
   const conceptL = initialQuestions[props.questionNr].conceptsOfQ.length
   // const [conceptsLength, setConceptLength] = useState(0)
   // setConceptLength(conceptL)
-  //console.log('conceptL:', conceptL)
+  // console.log('conceptL:', conceptL)
 
   useEffect(() => {
     // dynamically assign the width and height to canvas
 
     setTimeout(() => {
       const canvasEle = canvas.current
-      canvasEle.width = props.imgOneWidth && props.imgOneWidth
-      canvasEle.height = props.imgOneHeight && props.imgOneHeight
+      canvasEle.width = props.imgW && props.imgW
+      canvasEle.height = props.imgH && props.imgH
       ctx = canvasEle.getContext('2d')
       // console.log('01 canvasEle.height:', canvasEle.height)
       // console.log('02 canvasEle.width:', canvasEle.width)
@@ -44,24 +44,10 @@ function CanvasLines(props) {
         const p_3y = (props.questionData.conceptsOfQ[2].Y_t * canvasEle.height) / 100
         drawLine({ x: cc_3x, y: cc_3y, x1: p_3x, y1: p_3y }, { color: 'black', width: 2 })
       }
-
-      if (conceptL > 3) {
-        const cc_3x = (props.questionData.conceptsOfQ[3].X_c * canvasEle.width) / 100
-        const cc_3y = (props.questionData.conceptsOfQ[3].Y_c * canvasEle.height) / 100
-        const p_3x = (props.questionData.conceptsOfQ[3].X_t * canvasEle.width) / 100
-        const p_3y = (props.questionData.conceptsOfQ[3].Y_t * canvasEle.height) / 100
-        drawLine({ x: cc_3x, y: cc_3y, x1: p_3x, y1: p_3y }, { color: 'black', width: 2 })
-      }
-
-      if (conceptL > 4) {
-        const cc_3x = (props.questionData.conceptsOfQ[4].X_c * canvasEle.width) / 100
-        const cc_3y = (props.questionData.conceptsOfQ[4].Y_c * canvasEle.height) / 100
-        const p_3x = (props.questionData.conceptsOfQ[4].X_t * canvasEle.width) / 100
-        const p_3y = (props.questionData.conceptsOfQ[4].Y_t * canvasEle.height) / 100
-        drawLine({ x: cc_3x, y: cc_3y, x1: p_3x, y1: p_3y }, { color: 'black', width: 2 })
-      }
-    }, 100)
+    }, 0)
   })
+
+  // console.log('canvas:', canvas.current)
 
   const drawLine = (info, style = {}) => {
     const { x, y, x1, y1 } = info
@@ -74,16 +60,16 @@ function CanvasLines(props) {
     ctx.lineWidth = width
     ctx.stroke()
   }
-  // console.log('1 imgHeight:', props.imgOneHeight)
-  // console.log('2 imgWidth:', props.imgOneWidth)
-  // console.log('3 dropWrapperHeig:', props.dropWrapperHeight)
+  // console.log('1 imgWeight:', props.imgH)
+  // console.log('2 imgWidth:', props.imgW)
+  // console.log('3 dropWrapperHeig:', props.dwH)
 
   const styleCanvas = () => {
     return {
-      left: (props.dropWrapperWidth - props.imgOneWidth) / 2,
-      top: (props.dropWrapperHeight - props.imgOneHeight) / 2,
-      height: props.imgOneHeight,
-      width: props.imgOneWidth,
+      left: (props.dwW - props.imgW) / 2,
+      top: (props.dwH - props.imgH) / 2,
+      height: props.imgH,
+      width: props.imgW,
       // border: '1px solid rgb(0, 255, 21)',
       // backgroundColor: 'red',
     }

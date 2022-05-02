@@ -13,15 +13,15 @@ function App() {
   const questions = initialQuestions
 
   // QUESTION
-  const [question, setQuestion] = useState(0)
+  const [questionNr, setQuestionNr] = useState(0)
   function getQuestionParent(props) {
-    setQuestion(props)
+    setQuestionNr(props)
   }
-  const questionData = questions[question]
+  const questionData = questions[questionNr]
 
   // SHORTCUTS
-  const category = questions[question].category
-  const conceptsOfQ = questions[question].conceptsOfQ
+  const category = questions[questionNr].category
+  const conceptsOfQ = questions[questionNr].conceptsOfQ
 
   // INLOG
   const [inlogShow, setInlogShow] = useState(false)
@@ -42,7 +42,7 @@ function App() {
     setCmsShow(!props)
   }
 
-  console.log('question; App:', question)
+  console.log('questionNr; App:', questionNr)
   console.log('category App:', category)
   console.log('questionData App:', questionData)
   console.log('conceptsOfQ App:', conceptsOfQ)
@@ -52,14 +52,17 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {inlogShow ? <Inlog users={initialUsers} questions={questions} question={question} /> : null}
+        {inlogShow ? (
+          <Inlog users={initialUsers} questions={questions} questionNr={questionNr} />
+        ) : null}
         {menuShow ? <Menu /> : null}
-        {cmsShow ? <CMSImage questions={questions} question={question} /> : null}
+        {cmsShow ? <CMSImage questions={questions} questionNr={questionNr} /> : null}
         <DNDContainer
           users={initialUsers}
           questions={questions}
-          question={question}
+          questionNr={questionNr}
           getQuestion={getQuestionParent}
+          questionData={questionData}
           category={category}
           conceptsOfQ={conceptsOfQ}
           inlogShow={inlogShow}

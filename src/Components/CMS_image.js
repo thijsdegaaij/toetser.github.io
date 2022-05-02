@@ -31,7 +31,7 @@ function CMSImage(props) {
       <img
         ref={imgOne}
         className=" imageOne__img"
-        src={process.env.PUBLIC_URL + `/img/${props.questions[props.question].imageGroot}`}
+        src={process.env.PUBLIC_URL + `/img/${props.questions[props.questionNr].imageGroot}`}
         // window.location.origin
         alt={'foto niet gevonden'}
         onClick={(e) => givePosition(e)}

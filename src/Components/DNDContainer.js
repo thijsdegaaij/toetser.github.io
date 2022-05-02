@@ -1,22 +1,11 @@
-import React, { useState, useRef } from 'react'
-
-import { DndContext, useDraggable } from '@dnd-kit/core'
-import { MouseSensor, TouchSensor, useSensor, useSensors } from '@dnd-kit/core'
+import React, { useState } from 'react'
 
 import DNDHeader from './DNDHeader'
 
 import Dnd_img1 from './DND_img1'
 import Dnd_img4 from './DND_img4'
 
-import DropOne from './DropOne'
-import DropMultiple from './DropMultiple'
-import Draggables from './Draggables'
-import DropsFourPictures from './DropsFourPictures'
-
 function DndContainer(props) {
-  // const [category, setGategory] = useState(questions[question].category)
-  // setGategory(questions[question].category)
-
   const [posNumber, setPosNumber] = useState(0)
   const [negNumber, setNegNumber] = useState(0)
 
@@ -30,14 +19,13 @@ function DndContainer(props) {
     setHoera(props)
   }
 
-  const [goodPerQuestion, setGoodPerQuestion] = useState(0)
   const [hoera, setHoera] = useState(false)
 
   const goBack = () => {
-    props.getQuestion(props.question - 1)
+    props.getQuestion(props.questionNr - 1)
   }
   const goFurther = () => {
-    props.getQuestion(props.question + 1)
+    props.getQuestion(props.questionNr + 1)
   }
 
   return (
@@ -45,7 +33,7 @@ function DndContainer(props) {
       <DNDHeader
         users={props.users}
         questions={props.questions}
-        question={props.question}
+        questionNr={props.questionNr}
         hoera={hoera}
         posNumber={posNumber}
         negNumber={negNumber}
@@ -61,8 +49,9 @@ function DndContainer(props) {
           id="dropId1"
           conceptsOfQ={props.conceptsOfQ}
           questions={props.questions}
-          question={props.question}
+          questionNr={props.questionNr}
           getQuestion={props.getQuestion}
+          questionData={props.questionData}
           posNumber={posNumber}
           getPosNumber={getPosNumberParent}
           negNumber={negNumber}
@@ -76,8 +65,9 @@ function DndContainer(props) {
           id="drops4"
           conceptsOfQ={props.conceptsOfQ}
           questions={props.questions}
-          question={props.question}
+          questionNr={props.questionNr}
           getQuestion={props.getQuestion}
+          questionData={props.questionData}
           posNumber={posNumber}
           getPosNumber={getPosNumberParent}
           negNumber={negNumber}
@@ -88,7 +78,7 @@ function DndContainer(props) {
       )}
 
       <div className="buttons">
-        <button onClick={props.question > 0 ? goBack : null}>terug</button>
+        <button onClick={props.questionNr > 0 ? goBack : null}>terug</button>
         <button onClick={goFurther}>verder</button>
         <button onClick={() => props.getCmsShow(props.cmsShow)}>cms</button>
       </div>
