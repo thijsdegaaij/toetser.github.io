@@ -14,13 +14,14 @@ function Droppable(props) {
   return (
     <div
       className="dropItem cat_img1"
+      // className={isOver ? 'dropItem cat_img1' : 'dropItem cat_img1'}
       ref={setNodeRef}
       key={props.conceptI}
       id={props.concept.word}
       style={props.styleDropItem(props.concept)}
     >
       <div className="dropWord">{props.concept.word}</div>
-      <div className={isOver ? 'dropPlus' : 'dropPlusInvisible'}>+</div>
+      {/* <div className={isOver ? 'dropPlus' : 'dropPlusInvisible'}>+</div> */}
     </div>
   )
 }

@@ -27,14 +27,14 @@ function CanvasLines(props) {
       const cc_1y = (props.questionData.conceptsOfQ[0].Y_c * canvasEle.height) / 100
       const p_1x = (props.questionData.conceptsOfQ[0].X_t * canvasEle.width) / 100
       const p_1y = (props.questionData.conceptsOfQ[0].Y_t * canvasEle.height) / 100
-      drawLine({ x: cc_1x, y: cc_1y, x1: p_1x, y1: p_1y }, { color: 'black', width: 2 })
+      drawLine({ x: cc_1x, y: cc_1y, x1: p_1x, y1: p_1y }, { color: 'darkgray', width: 2 })
 
       if (conceptL > 1) {
         const cc_2x = (props.questionData.conceptsOfQ[1].X_c * canvasEle.width) / 100
         const cc_2y = (props.questionData.conceptsOfQ[1].Y_c * canvasEle.height) / 100
         const p_2x = (props.questionData.conceptsOfQ[1].X_t * canvasEle.width) / 100
         const p_2y = (props.questionData.conceptsOfQ[1].Y_t * canvasEle.height) / 100
-        drawLine({ x: cc_2x, y: cc_2y, x1: p_2x, y1: p_2y }, { color: 'black', width: 2 })
+        drawLine({ x: cc_2x, y: cc_2y, x1: p_2x, y1: p_2y }, { color: 'darkgray', width: 2 })
       }
 
       if (conceptL > 2) {
@@ -42,7 +42,7 @@ function CanvasLines(props) {
         const cc_3y = (props.questionData.conceptsOfQ[2].Y_c * canvasEle.height) / 100
         const p_3x = (props.questionData.conceptsOfQ[2].X_t * canvasEle.width) / 100
         const p_3y = (props.questionData.conceptsOfQ[2].Y_t * canvasEle.height) / 100
-        drawLine({ x: cc_3x, y: cc_3y, x1: p_3x, y1: p_3y }, { color: 'black', width: 2 })
+        drawLine({ x: cc_3x, y: cc_3y, x1: p_3x, y1: p_3y }, { color: 'darkgray', width: 2 })
       }
 
       if (conceptL > 3) {
@@ -50,7 +50,7 @@ function CanvasLines(props) {
         const cc_3y = (props.questionData.conceptsOfQ[3].Y_c * canvasEle.height) / 100
         const p_3x = (props.questionData.conceptsOfQ[3].X_t * canvasEle.width) / 100
         const p_3y = (props.questionData.conceptsOfQ[3].Y_t * canvasEle.height) / 100
-        drawLine({ x: cc_3x, y: cc_3y, x1: p_3x, y1: p_3y }, { color: 'black', width: 2 })
+        drawLine({ x: cc_3x, y: cc_3y, x1: p_3x, y1: p_3y }, { color: 'darkgray', width: 2 })
       }
 
       if (conceptL > 4) {
@@ -58,14 +58,14 @@ function CanvasLines(props) {
         const cc_3y = (props.questionData.conceptsOfQ[4].Y_c * canvasEle.height) / 100
         const p_3x = (props.questionData.conceptsOfQ[4].X_t * canvasEle.width) / 100
         const p_3y = (props.questionData.conceptsOfQ[4].Y_t * canvasEle.height) / 100
-        drawLine({ x: cc_3x, y: cc_3y, x1: p_3x, y1: p_3y }, { color: 'black', width: 2 })
+        drawLine({ x: cc_3x, y: cc_3y, x1: p_3x, y1: p_3y }, { color: 'darkgray', width: 2 })
       }
     }, 100)
   })
 
   const drawLine = (info, style = {}) => {
     const { x, y, x1, y1 } = info
-    const { color = 'black', width = 3 } = style
+    const { color = 'gray', width = 3 } = style
     // console.log('xxxx:', y1)
     ctx.beginPath()
     ctx.moveTo(x, y)
