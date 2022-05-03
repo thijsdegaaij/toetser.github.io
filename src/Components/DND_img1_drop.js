@@ -4,20 +4,23 @@ import { useDroppable } from '@dnd-kit/core'
 
 function Droppable(props) {
   // Properties of useDroppable; find at dnd-kit useDroppable
-  const { setNodeRef } = useDroppable({
+  const { setNodeRef, isOver } = useDroppable({
     id: props.id,
     data: props.concept.word,
   })
 
+  console.log('isOver', isOver)
+
   return (
     <div
-      ref={setNodeRef}
       className="dropItem cat_img1"
+      ref={setNodeRef}
       key={props.conceptI}
       id={props.concept.word}
       style={props.styleDropItem(props.concept)}
     >
       <div className="dropWord">{props.concept.word}</div>
+      <div className={isOver ? 'dropPlus' : 'dropPlusInvisible'}>+</div>
     </div>
   )
 }

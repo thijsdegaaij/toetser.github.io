@@ -3,7 +3,7 @@ import { useDroppable } from '@dnd-kit/core'
 
 function Droppable(props) {
   // Properties of useDroppable; find at dnd-kit useDroppable
-  const { setNodeRef } = useDroppable({
+  const { setNodeRef, isOver } = useDroppable({
     id: props.id,
     data: props.concept.word,
   })
@@ -18,6 +18,7 @@ function Droppable(props) {
   return (
     <div ref={setNodeRef} style={style} className="dropItem cat_img4" id={props.concept.word}>
       <div className="dropWord">{props.concept.word}</div>
+      <div className={isOver ? 'dropPlus' : 'dropPlusInvisible'}>+</div>
       <img
         className="dropImage cat_img4"
         src={process.env.PUBLIC_URL + `/img/${props.concept.image}`}

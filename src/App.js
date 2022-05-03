@@ -13,7 +13,7 @@ function App() {
   const questions = initialQuestions
 
   // QUESTION
-  const [questionNr, setQuestionNr] = useState(0)
+  const [questionNr, setQuestionNr] = useState(2)
   function getQuestionParent(props) {
     setQuestionNr(props)
   }

@@ -27,11 +27,12 @@ const initialQuestions = [
     category: 'cat_img1',
     imageGroot: 'kernfusie-01.png',
     conceptsOfQ: [
-      { word: 'ster/zon', X_c: 25, Y_c: 0, X_t: 27.5, Y_t: 21.6 },
-      { word: 'kernfusie', X_c: 75, Y_c: 32, X_t: 48, Y_t: 34.4 },
-      { word: 'waterstof', X_c: 75, Y_c: 0, X_t: 41, Y_t: 15.5 },
-      { word: 'helium', X_c: 25, Y_c: 63, X_t: 36.1, Y_t: 51 },
-      { word: 'koolstof/carbon', X_c: 25, Y_c: 100, X_t: 50, Y_t: 75 },
+      { word: 'ster / zon', X_c: 20, Y_c: 0, X_t: 27.5, Y_t: 21.6 },
+      { word: 'kernfusie', X_c: 80, Y_c: 32, X_t: 48, Y_t: 34.4 },
+      { word: 'waterstof', X_c: 80, Y_c: 0, X_t: 41, Y_t: 16.5 },
+      { word: 'straling / energie', X_c: 20, Y_c: 80, X_t: 80.4, Y_t: 85.3 },
+      // { word: 'helium', X_c: 25, Y_c: 63, X_t: 36.1, Y_t: 51 },
+      // { word: 'koolstof/carbon', X_c: 25, Y_c: 100, X_t: 50, Y_t: 75 },
     ],
   },
   {
